@@ -25,7 +25,6 @@ public class List implements Node {
 	public int lenght=0;
 	public List() {}
 	
-
 	/**
 	 * 
 	 * @return
@@ -280,25 +279,26 @@ public class List implements Node {
 	 * @param node
 	 * @return
 	 */
-	public Node binarySearch(Node node)
-	{quickSort(this);
-	
-		return binarySearch2(node,0,lenght) ;
-	}
-	private Node binarySearch2(Node node,int size0,int size1) {
-		if(node.isEqual(get((size0+size1)/2)))
-			return node;
-		if(node.value>((size0+size1)/2))){
-			return binarySearch2(node,size0/2,size1);
+	public int binarySearch(Node node) {
+		int lower_boud = 0, upper_bound = this.length() - 1;
+		int middle = 0, index = -1;
+
+		while (upper_bound > lower_boud) {
+			middle = (lower_boud + upper_bound / 2);
+
+			if (get(middle).isEqual(node)) {
+				index = middle;
+				break;
+			} else if (get(middle).isLessThan(node))
+				lower_boud = middle + 1;
+			else
+				upper_bound = middle - 1;
+
 		}
-		else {
-			return binarySearch2(node,size0,size1/2);
-		}
+		return index;
 	}
-	
-	/**
-	 * 
-	 */
+
+	 
 	public void reverse()
 	{
 		Stack tempStack = new Stack();
@@ -498,5 +498,11 @@ public class List implements Node {
 	public boolean isLessThan(Node node) {
 		// TODO Auto-generated method stub
 		return false;
+	}
+	
+	@Override
+	public int numberEdges(Node node) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 }

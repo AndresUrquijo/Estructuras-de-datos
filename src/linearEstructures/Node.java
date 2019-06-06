@@ -1,4 +1,5 @@
 package linearEstructures;
+import linearEstructures.List;
 
 
 /*
@@ -19,9 +20,13 @@ package linearEstructures;
  */
 public interface Node {
 	
+	boolean visited=false;
 	Node next = null; //Pointer
+	List edges=new List();
 	
 	/**
+	 * 
+	 * 
 	 * 
 	 * @return
 	 */
@@ -55,7 +60,7 @@ public interface Node {
 	 * @return
 	 */
 	public boolean isEqual(Node node);
-	
+	public int numberEdges(Node node);
 	
 	/**
 	 * 
