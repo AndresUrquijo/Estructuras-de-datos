@@ -1,6 +1,6 @@
 package linearEstructures;
 import java.io.*;
-
+ 
 /*
 # Lists based on Pointers.
 #
